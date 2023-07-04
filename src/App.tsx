@@ -1,7 +1,7 @@
 import React, { useRef } from "react";
 import "./App.css";
 import { Canvas, useFrame } from "@react-three/fiber";
-import Product from "./components/product";
+import Product from "src/components/product";
 function App() {
   return (
     <div style={{ height: "100vh" }}>
