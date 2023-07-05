@@ -1,0 +1,40 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "compounds": [
+    {
+      "name": "Debugging Mode",
+      "configurations": ["Launch via YARN", "Launch Firefox"],
+      "stopAll": true
+    }
+  ],
+  "configurations": [
+    {
+      "name": "Launch via YARN",
+      "type": "node",
+      "request": "launch",
+      "cwd": "${workspaceRoot}",
+      "runtimeExecutable": "yarn",
+      "runtimeArgs": ["start"]
+    },
+    {
+      "name": "Launch Edge",
+      "type": "pwa-msedge",
+      "userDataDir": false,
+      "request": "launch",
+      "url": "http://localhost:3000",
+      "webRoot": "${workspaceFolder}"
+    },
+    {
+      "name": "Launch Firefox",
+      "type": "firefox",
+      "userDataDir": false,
+      "request": "launch",
+      "reAttach": true,
+      "url": "http://localhost:3000/",
+      "webRoot": "${workspaceFolder}"
+    }
+  ]
+}

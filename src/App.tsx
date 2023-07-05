@@ -1,17 +1,22 @@
-import React, { useRef } from "react";
-import "./App.css";
-import { Canvas, useFrame } from "@react-three/fiber";
-import Product from "src/components/product";
-function App() {
-  return (
-    <div style={{ height: "100vh" }}>
-      <Canvas>
-        <ambientLight />
-        <pointLight position={[10, 10, 10]} />
-        <Product />
-      </Canvas>
-    </div>
-  );
+import React from "react";
+import ReactDOM from "react-dom";
+import Routes from "./routes";
+import store from "./store";
+import { fetchUserData } from "./store/authSlices/authThunk";
+import { Router } from "react-router-dom";
+import { Provider } from "react-redux";
+import { getToken } from "./utils/tokenStorage";
+import history from "src/context/routerHistory";
+import "./index.css";
+if (getToken()) {
+  store.dispatch(fetchUserData());
 }
 
-export default App;
+ReactDOM.render(
+  <Router history={history}>
+    <Provider store={store}>
+      <Routes />
+    </Provider>
+  </Router>,
+  document.getElementById("root")
+);

@@ -1,0 +1,18 @@
+{
+  "greeting": "Welcome to 3D web store!",
+  "entranceButton": "enter",
+  "signIn": "Sign in",
+  "login": "Login",
+  "logoutButton": "Logout",
+  "loginButton": "Login",
+  "enterPassword": "Enter password",
+  "enterEmail": "Enter email",
+  "headerTitle": "3D web store",
+  "register": "Register",
+  "username": "Username",
+  "enterUsername": "Enter username",
+  "userType": "User type",
+  "selectUserType": "Select user type",
+  "seller": "Seller",
+  "buyer": "Buyer"
+}
