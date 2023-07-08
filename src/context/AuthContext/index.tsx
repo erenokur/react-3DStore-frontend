@@ -90,19 +90,19 @@ export function AuthProvider({ children }: { children: React.ReactNode }) {
 
   const getUser = () => {
     if (typeof window !== "undefined") {
-      const user = localStorage.getItem("user") || "";
+      const user = localStorage.getItem("user") ?? "";
       return user;
     } else {
-      return user || "";
+      return user ?? "";
     }
   };
 
   const getToken = () => {
     if (typeof window !== "undefined") {
-      const token = localStorage.getItem("token") || "";
+      const token = localStorage.getItem("token") ?? "";
       return token;
     } else {
-      return token || "";
+      return token ?? "";
     }
   };
 

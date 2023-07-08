@@ -1,19 +1,26 @@
-import React from "react";
+import React, { lazy, Suspense } from "react";
 import { Route, Routes } from "react-router-dom";
-import Login from "src/pages/login";
-import Register from "../pages/Register";
-import NoMatch from "../pages/404";
-import Home from "../pages/Home";
-import PrivateRoute from "./PrivateRoute";
+import ProtectedRoute from "./protectedRoute";
+
+const LazyLogin = lazy(() => import("src/pages/login"));
+const LazyRegister = lazy(() => import("src/pages/register"));
+const LazyHome = lazy(() => import("src/pages/home"));
+const ErrorPage = lazy(() => import("src/pages/error"));
 
 const AppRoutes: React.FC = () => (
-  <Routes>
-    <Route path="/" element={<Login />} />
-    <Route path="/login" element={<Login />} />
-    <Route path="/register" element={<Register />} />
-    <PrivateRoute path="/home" element={<Home />} />
-    <Route path="*" element={<NoMatch />} />
-  </Routes>
+  <Suspense fallback={<div>Loading...</div>}>
+    <Routes>
+      <Route path="/login" element={<LazyLogin />} />
+      <Route path="/register" element={<LazyRegister />} />
+      <ProtectedRoute
+        path="/home"
+        element={<LazyHome />}
+        roles={["admin", "user"]}
+      />
+      <Route path="/error/:errorCode" element={<ErrorPage />} />
+      <Route path="*" element={<ErrorPage errorCode={404} />} />
+    </Routes>
+  </Suspense>
 );
 
 export default AppRoutes;
