@@ -1,22 +1,21 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Routes from "./routes";
-import store from "./store";
-import { fetchUserData } from "./store/authSlices/authThunk";
-import { Router } from "react-router-dom";
+import Routes from "src/routes";
+import store from "src/context/reduxStore";
 import { Provider } from "react-redux";
-import { getToken } from "./utils/tokenStorage";
-import history from "src/context/routerHistory";
+import { AuthProvider } from "src/context/AuthContext";
+import { I18nextProvider } from "react-i18next";
+import i18n from "./context/i18next";
 import "./index.css";
-if (getToken()) {
-  store.dispatch(fetchUserData());
-}
+import "react-toastify/dist/ReactToastify.css";
 
 ReactDOM.render(
-  <Router history={history}>
-    <Provider store={store}>
-      <Routes />
-    </Provider>
-  </Router>,
+  <AuthProvider>
+    <I18nextProvider i18n={i18n}>
+      <Provider store={store}>
+        <Routes />
+      </Provider>
+    </I18nextProvider>
+  </AuthProvider>,
   document.getElementById("root")
 );
