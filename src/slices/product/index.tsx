@@ -1,6 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchUserData, login, signOut, register } from "src/thunk/auth";
-
+// import { fetchUserData, login, signOut, register } from "src/thunks/product";
+import { fetchUserData, loginThunk, registerThunk } from "src/thunks/product";
 interface AuthState {
   token: string | null;
   loading: boolean;
