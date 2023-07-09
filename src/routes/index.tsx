@@ -12,10 +12,15 @@ const AppRoutes: React.FC = () => (
     <Routes>
       <Route path="/login" element={<LazyLogin />} />
       <Route path="/register" element={<LazyRegister />} />
-      <ProtectedRoute
+      <Route
         path="/home"
-        element={<LazyHome />}
-        roles={["admin", "user"]}
+        element={
+          <ProtectedRoute
+            path="/home"
+            roles={["admin", "user"]}
+            element={<LazyHome />}
+          />
+        }
       />
       <Route path="/error/:errorCode" element={<ErrorPage />} />
       <Route path="*" element={<ErrorPage errorCode={404} />} />

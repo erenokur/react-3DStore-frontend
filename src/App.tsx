@@ -9,13 +9,15 @@ import i18n from "./context/i18next";
 import "./index.css";
 import "react-toastify/dist/ReactToastify.css";
 
-ReactDOM.render(
-  <AuthProvider>
-    <I18nextProvider i18n={i18n}>
-      <Provider store={store}>
-        <Routes />
-      </Provider>
-    </I18nextProvider>
-  </AuthProvider>,
-  document.getElementById("root")
-);
+function App() {
+  return (
+    <AuthProvider>
+      <I18nextProvider i18n={i18n}>
+        <Provider store={store}>
+          <Routes />
+        </Provider>
+      </I18nextProvider>
+    </AuthProvider>
+  );
+}
+export default App;
