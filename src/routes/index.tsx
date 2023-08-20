@@ -12,6 +12,7 @@ const AppRoutes: React.FC = () => (
     <Routes>
       <Route path="/login" element={<LazyLogin />} />
       <Route path="/register" element={<LazyRegister />} />
+      <Route path="/" element={<LazyHome />} />
       <Route
         path="/home"
         element={

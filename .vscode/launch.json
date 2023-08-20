@@ -6,7 +6,7 @@
   "compounds": [
     {
       "name": "Debugging Mode",
-      "configurations": ["Launch via YARN", "Launch Firefox"],
+      "configurations": ["Launch via YARN", "Launch Edge"],
       "stopAll": true
     }
   ],
@@ -21,20 +21,20 @@
     },
     {
       "name": "Launch Edge",
-      "type": "pwa-msedge",
+      "type": "msedge",
       "userDataDir": false,
       "request": "launch",
       "url": "http://localhost:3000",
-      "webRoot": "${workspaceFolder}"
+      "webRoot": "${workspaceFolder}/src"
     },
     {
       "name": "Launch Firefox",
       "type": "firefox",
-      "userDataDir": false,
       "request": "launch",
       "reAttach": true,
-      "url": "http://localhost:3000/",
-      "webRoot": "${workspaceFolder}"
+      "url": "http://localhost:3000/index.html",
+      "webRoot": "${workspaceFolder}/src",
+      "timeout": 10000
     }
   ]
 }
