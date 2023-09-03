@@ -11,20 +11,23 @@ const Home: React.FC = () => {
   const { t } = useTranslation("translation", { useSuspense: false });
   const gltf = useLoader(GLTFLoader, "../../assets/models/shipyard.glb");
 
+  // Set the layers property of the objects in Collection 1 to 1
+  //gltf.scene.children[0].layers.set(1);
+
   return (
     <div className="h-screen flex flex-col justify-center items-center bg-black-100">
-      <Canvas camera={{ position: [-0.5, 1, 2] }} shadows>
+      <Canvas camera={{ position: [8, 2, 6] }} shadows>
         <directionalLight position={[3.3, 1.0, 4.4]} castShadow />
         <primitive
-          object={gltf.scene}
+          object={gltf.scene.children[0]}
           position={[0, 1, 0]}
           children-0-castShadow
         />
-        <Circle args={[10]} rotation-x={-Math.PI / 2} receiveShadow>
+        {/* <Circle args={[10]} rotation-x={-Math.PI / 2} receiveShadow>
           <meshStandardMaterial />
-        </Circle>
+        </Circle> */}
         <OrbitControls target={[0, 1, 0]} />
-        <axesHelper args={[5]} />
+        {/* <axesHelper args={[5]} /> */}
         <Stats />
       </Canvas>
       <h1 className="text-4xl font-bold mb-8">{t("greeting")}</h1>
